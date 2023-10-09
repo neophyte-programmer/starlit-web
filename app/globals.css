@@ -5,6 +5,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
 }
@@ -86,6 +90,6 @@ h1,h2,h3,h4,h5,h6 {
   }
 
   section {
-    @apply lg:py-12 py-8 flex;
+    @apply lg:py-16 py-8 flex;
   }
 }
