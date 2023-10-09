@@ -15,7 +15,8 @@ import Link from "next/link"
 
 import { BiHomeAlt2, BiInfoCircle, } from "react-icons/bi"
 import { AiOutlineProject } from "react-icons/ai"
-import { MdOutlineVolunteerActivism, MdMailOutline} from "react-icons/md"
+import { MdOutlineVolunteerActivism, MdMailOutline } from "react-icons/md"
+import { APP_NAME } from "@/utils/constants"
 
 const links = [
     {
@@ -63,7 +64,7 @@ export default function MobileNav() {
                             <Image src="/images/logos/favi.png" alt="logo" width={80} height={40} className="aspect-square object-contain mx-auto" />
                             {/* <Icons.logo className="h-6 w-6" /> */}
                             <div className="mb-2 mt-4 text-lg text-center font-medium">
-                                Starlit Child Ghana
+                                {APP_NAME}
                             </div>
                             <p className="text-sm leading-tight text-muted-foreground">
                                 Leaving beneficial impact in the lives of every child
@@ -72,7 +73,7 @@ export default function MobileNav() {
                     </SheetHeader>
                     <div className="flex flex-col items-start gap-4 mt-8 text-left py-4">
                         {
-                            links.map(({path, icon: Icon, label}) => (
+                            links.map(({ path, icon: Icon, label }) => (
                                 <SheetClose asChild key={path}>
                                     <Link href={path}>
                                         <div className="flex items-center text-neutral-700 gap-2 py-2">
@@ -83,8 +84,8 @@ export default function MobileNav() {
                                 </SheetClose>
                             ))
                         }
-                        
-                        
+
+
                     </div>
                     <SheetFooter>
 

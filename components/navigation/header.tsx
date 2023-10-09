@@ -2,6 +2,7 @@ import Image from "next/image";
 import Navbar from "./navbar";
 import Link from "next/link";
 import MobileNav from "./mobile-nav";
+import { APP_NAME } from "@/utils/constants";
 
 export default function Header() {
     return (
@@ -11,7 +12,7 @@ export default function Header() {
                     <div className="flex items-center gap-2">
                         <Image priority src="/images/logos/favi.png" alt="logo" width={50} height={40} className="aspect-square object-contain" />
                         <p className="font-semibold text-2xl mt-2 hidden tracking-tight lg:block ">
-                            Starlit Child Ghana
+                             {APP_NAME}
                         </p>
                     </div>
                 </Link>

@@ -21,6 +21,7 @@ import { IoLibrarySharp } from "react-icons/io5"
 import { BsBookmarkFill, BsFillPeopleFill, BsFillPersonCheckFill, BsShieldFill, BsFillPatchCheckFill } from "react-icons/bs"
 import { Button } from "../ui/button"
 import { Mail } from "lucide-react"
+import { APP_NAME } from "@/utils/constants"
 
 
 const components: { title: string; href: string; description: string, icon: React.ReactNode }[] = [
@@ -78,7 +79,7 @@ export default function Navbar() {
                                         <Image src="/images/logos/favi.png" alt="logo" width={80} height={40} className="aspect-square object-contain" />
                                         {/* <Icons.logo className="h-6 w-6" /> */}
                                         <div className="mb-2 mt-4 text-lg font-medium">
-                                            Starlit Child Ghana
+                                        {APP_NAME}
                                         </div>
                                         <p className="text-sm leading-tight text-muted-foreground">
                                             Leaving beneficial impact in the lives of every child
