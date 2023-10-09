@@ -36,7 +36,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className='relative  grid md:grid-cols-2 mt-12 gap-8 min-h-screen overflow-hidden'>
+      <section id="motto" className='relative  grid md:grid-cols-2 mt-12 gap-8 min-h-screen overflow-hidden'>
         <div className="absolute -left-24 top w-max h-max overflow-hidden">
           <Image src={"/images/scaleTrans.svg"} width={500} height={400} alt="" className="z-0 " />
         </div>
@@ -62,6 +62,27 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
+      <section className='flex flex-col gap-8 w-full md:bg-muted px-4 '>
+        <div className='grid md:grid-cols-2 gap-4 md:gap-8 w-full'>
+          <h1 className='text-right text-3xl md:text-6xl font-semibold bg-clip-text bg-gradient-to-b to-starlit-pink from-purple-500 text-transparent '>Our mission</h1>
+          <p className=' text-right md:text-left md:text-lg md:w-[90%] '>
+            To cater for the educational, physical and emotional needs of children in order to influence their lives in a positive manner
+
+          </p>
+        </div>
+        <div className='grid md:grid-cols-2 gap-4 md:gap-8 w-full max-sm:border-t max-sm:pt-4'>
+          <p className='md:text-lg md:text-right md:w-[90%] md:ml-auto md:mt-auto '>
+          To leave a beneficial impact in the lives of every child 
+
+          </p>
+          <h1 className='text-3xl md:text-6xl font-semibold bg-clip-text bg-gradient-to-b from-starlit-pink to-purple-500 text-transparent '>Our vision</h1>
+        </div>
+      </section>
+      <section id="core-values" className=' flex flex-col w-full  items-center justify-center gap-4'>
+        <h1 className='font-semibold text-4xl'>
+          Our Core Values
+        </h1>
       </section>
     </main>
   )
