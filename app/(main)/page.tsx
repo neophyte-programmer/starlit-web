@@ -1,4 +1,7 @@
+import ActionTooltip from '@/components/action-tooltip'
+import CoreValueCard from '@/components/cards/core-value-card'
 import { Button } from '@/components/ui/button'
+import { coreValues, partners } from '@/utils/data'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -21,18 +24,18 @@ export default function Home() {
           </div>
 
         </div>
-        <div className='absolute bottom-0 gap-4 min-h-[60vh] w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+        <div className='md:absolute bottom-0 gap-4 min-h-[60vh] w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
           <div className='bg-neutral-200 rounded-3xl  overflow-hidden relative w-full h-[110%] sm:-translate-y-[4rem]'>
-            <Image priority src="/images/hero1.jpg" alt="children" fill className='object-cover' />
+            <Image priority src="/images/hero.jpeg" alt="children" fill className='object-cover' />
           </div>
           <div className='bg-neutral-200 rounded-3xl overflow-hidden relative w-full h-full hidden sm:block translate-y-[2rem] '>
-            <Image src="/images/hero2.jpg" alt="children" fill className='object-cover' />
+            <Image src="/images/hero2.jpeg" alt="children" fill className='object-cover' />
           </div>
           <div className='bg-neutral-200 rounded-3xl overflow-hidden relative w-full h-full hidden md:block lg:translate-y-[2rem] '>
-            <Image src="/images/her3.jpg" alt="children" fill className='object-cover' />
+            <Image src="/images/hero3.jpeg" alt="children" fill className='object-cover' />
           </div>
           <div className='bg-neutral-200 rounded-3xl overflow-hidden relative hidden lg:block w-full h-[110%] -translate-y-[4rem]'>
-            <Image src="/images/hero4.jpg" alt="children" fill className='object-cover' />
+            <Image src="/images/hero4.jpeg" alt="children" fill className='object-cover' />
           </div>
         </div>
       </section>
@@ -55,7 +58,7 @@ export default function Home() {
         <div className='flex items-center justify-center md:p-4 max-md:min-h-[50vh] '>
           <div className='w-full h-full grid md:grid-cols-2 gap-4'>
             <div className='bg-neutral-200 rounded-3xl overflow-hidden my-auto relative w-full h-[90%]  '>
-              <Image src="/images/about1.jpg" alt="children" fill className='object-cover' />
+              <Image src="/images/about1.jpeg" alt="children" fill className='object-cover' />
             </div>
             <div className='bg-neutral-200 rounded-3xl overflow-hidden relative w-full h-full  '>
               <Image src="/images/about2.avif" alt="children" fill className='object-cover' />
@@ -73,16 +76,39 @@ export default function Home() {
         </div>
         <div className='grid md:grid-cols-2 gap-4 md:gap-8 w-full max-sm:border-t max-sm:pt-4'>
           <p className='md:text-lg md:text-right md:w-[90%] md:ml-auto md:mt-auto '>
-          To leave a beneficial impact in the lives of every child 
+            To leave a beneficial impact in the lives of every child
 
           </p>
           <h1 className='text-3xl md:text-6xl font-semibold bg-clip-text bg-gradient-to-b from-starlit-pink to-purple-500 text-transparent '>Our vision</h1>
         </div>
       </section>
-      <section id="core-values" className=' flex flex-col w-full  items-center justify-center gap-4'>
+      <section id="core-values" className='gap-12 flex flex-col w-full  items-center justify-center'>
         <h1 className='font-semibold text-4xl'>
           Our Core Values
         </h1>
+        <div className='flex-1  w-full h-full grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 items-center justify-center'>
+          {
+            coreValues.map((value, i) => (
+              <CoreValueCard key={i} value={value} />
+            ))
+          }
+        </div>
+      </section>
+      <section id="partners" className='min-h-[40vh] flex flex-col gap-8' >
+        <h3 className='font-semibold text-4xl'>
+          Our Partners
+        </h3>
+        <div className='grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-4'>
+          {
+            partners.map((partner, i) => (
+              <ActionTooltip label={partner.name} side='top'   key={i}>
+                <div className='relative aspect-square w-full h-full'>
+                  <Image className='' fill alt={partner.name} src={`/images/partners${partner.img}`} />
+                  </div>
+              </ActionTooltip>
+            ))
+          }
+        </div>
       </section>
     </main>
   )

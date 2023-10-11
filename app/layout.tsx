@@ -1,6 +1,7 @@
 import { APP_NAME } from '@/utils/constants'
 import './globals.css'
 import type { Metadata } from 'next'
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: `Home | ${APP_NAME}`,
@@ -15,7 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="">{children}</body>
+      <body className="">
+        {children}
+        <Toaster />
+      </body>
     </html>
   )
 }
