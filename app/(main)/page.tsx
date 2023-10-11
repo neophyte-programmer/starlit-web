@@ -24,7 +24,7 @@ export default function Home() {
           </div>
 
         </div>
-        <div className='md:absolute bottom-0 gap-4 min-h-[60vh] w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+        <div className='md:absolute md:bottom-0 gap-4 min-h-[60vh] w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
           <div className='bg-neutral-200 rounded-3xl  overflow-hidden relative w-full h-[110%] sm:-translate-y-[4rem]'>
             <Image priority src="/images/hero.jpeg" alt="children" fill className='object-cover' />
           </div>
@@ -43,7 +43,7 @@ export default function Home() {
         <div className="absolute -left-24 top w-max h-max overflow-hidden">
           <Image src={"/images/scaleTrans.svg"} width={500} height={400} alt="" className="z-0 " />
         </div>
-        <div className='w-full flex relative flex-col justify-center gap-'>
+        <div className='w-full flex  flex-col justify-center gap-'>
           <p className='uppercase  text-sm text-starlit-pink'>About Us</p>
           <h3 className='font-semibold text-3xl'>Our overarching objective is to extend a helping hand </h3>
           <p className='mt-4'>
