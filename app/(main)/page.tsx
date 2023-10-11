@@ -40,7 +40,7 @@ export default function Home() {
         </div>
       </section>
       <section id="motto" className='relative  grid md:grid-cols-2 mt-12 gap-8 min-h-screen overflow-hidden'>
-        <div className="absolute -left-24 top w-max h-max overflow-hidden">
+        <div className="hidden md:absolute -left-24 top w-max h-max overflow-hidden">
           <Image src={"/images/scaleTrans.svg"} width={500} height={400} alt="" className="z-0 " />
         </div>
         <div className='w-full flex  flex-col justify-center gap-'>
