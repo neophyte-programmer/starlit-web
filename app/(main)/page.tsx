@@ -24,7 +24,7 @@ export default function Home() {
           </div>
 
         </div>
-        <div className='md:absolute md:bottom-0 gap-4 min-h-[60vh] w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+        <div className='md:absolute md:bottom-0 gap-4 md:min-h-[60vh] w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
           <div className='bg-neutral-200 rounded-3xl  overflow-hidden relative w-full h-[110%] sm:-translate-y-[4rem]'>
             <Image priority src="/images/hero.jpeg" alt="children" fill className='object-cover' />
           </div>
