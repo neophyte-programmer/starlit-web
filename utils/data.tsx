@@ -43,21 +43,21 @@ export const footerSocials: SocialLink[] = [
     {
         icon: BsFacebook,
         title: "Facebook",
-        link: "https://facebook.com",
+        link: "https://www.facebook.com/profile.php?id=100092190588769&mibextid=ZbWKwL",
     },
     {
         icon: BsTwitter,
         title: "Twitter / X",
-        link: "https://twitter.com",
+        link: "https://x.com/starlitchildgh?s=21",
     },
     {
         icon: BsLinkedin,
         title: "LinkedIn",
-        link: "https://linkedin.com",
+        link: "https://www.linkedin.com/company/starlit-child-ghana/ ",
     },
     {
         icon: BsInstagram,
         title: "Instagram",
-        link: "https://instagram.com",
+        link: "https://instagram.com/starlitchildgh?igshid=MzRlODBiNWFlZA== ",
     },
 ] 
