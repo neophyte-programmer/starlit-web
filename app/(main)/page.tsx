@@ -94,7 +94,7 @@ export default function Home() {
           }
         </div>
       </section>
-      <section id="partners" className='min-h-[40vh] flex flex-col gap-8' >
+      {/* <section id="partners" className='min-h-[40vh] flex flex-col gap-8' >
         <h3 className='font-semibold text-4xl'>
           Our Partners
         </h3>
@@ -109,7 +109,7 @@ export default function Home() {
             ))
           }
         </div>
-      </section>
+      </section> */}
     </main>
   )
 }
