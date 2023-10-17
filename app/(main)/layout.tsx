@@ -10,7 +10,7 @@ export default function MainLayout({
 }) {
     return (
         <>
-            <main className='container max-sm:px-4 '>
+            <main className='max-sm:px-4 '>
                 <Header />
                 {children}
             </main>

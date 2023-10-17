@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-    <main className='flex flex-col gap-4'>
+    <main className='container flex flex-col gap-4'>
       <section className='relative min-h-screen gap-8 flex flex-col w-full pb-8 mt-8'>
         <div className='max-w-2xl flex flex-col gap-4 items-center justify-center mx-auto w-full '>
           <h1 className='font-bold text-5xl md:text-7xl text-center'>Make a difference here at Starlit  </h1>

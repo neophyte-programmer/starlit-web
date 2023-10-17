@@ -1,5 +1,9 @@
 import { IconType } from "react-icons"
 
+export type Children = {
+    children: React.ReactNode
+}
+
 export type CoreValue = {
     icon: IconType
     title: string
