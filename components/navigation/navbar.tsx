@@ -52,13 +52,13 @@ const components: { title: string; href: string; description: string, icon: Reac
         href: "/about#founders",
         description: "A look into our founding members",
     },
-    {
-        icon: <BsFillPeopleFill className="text-lg text-starlit-blue" />,
-        title: "The Team",
-        href: "/about#team",
-        description:
-            "Meet the board members and advisors",
-    },
+    // {
+    //     icon: <BsFillPeopleFill className="text-lg text-starlit-blue" />,
+    //     title: "The Team",
+    //     href: "/about#team",
+    //     description:
+    //         "Meet the board members and advisors",
+    // },
     
 ]
 

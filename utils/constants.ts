@@ -1,7 +1,7 @@
 export const APP_NAME = "Starlit Child Ghana"
 export const CONTACT = {
     email: {
-        primary: "starlitchildfoundation@gmail.com",
+        primary: "starlitchildghana@gmail.com",
     },
     phone: {
         primary: "0546990587",

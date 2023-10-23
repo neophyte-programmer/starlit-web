@@ -36,3 +36,13 @@ export type Founder = {
 export type Team = Omit<Founder, "about"> &  {
     position: string
 }
+
+export type Project = {
+    thumbnail: string
+    slug: string
+    title: string
+    date: string
+    description: string
+    videos?: string[]
+    pictures?: string[]
+}
