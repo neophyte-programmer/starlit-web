@@ -46,3 +46,32 @@ export type Project = {
     videos?: string[]
     pictures?: string[]
 }
+
+export type Action = {
+    type: string;
+    payload: any;
+};
+
+export type State = {
+    user: any;
+    role: any
+};
+
+export type User = {
+    firstname: string
+    lastname: string
+    email: string
+    mobile: string
+    token: string
+    createdAt: string
+    updatedAt: string
+}
+
+export type FounderUser = User 
+
+export type ExecutiveUser = User & {
+    position: string
+    status: "current" | "past"
+}
+
+export type ServerCallback =  ((data: any) => void) | (() => void)
