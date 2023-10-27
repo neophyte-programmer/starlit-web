@@ -5,7 +5,8 @@ const userRole = fetchRole();
 
 const initialState = {
     user: userInfo,
-    role: userRole
+    role: userRole,
+    positions: [],
 }
 
 export default initialState

@@ -1,3 +1,4 @@
+import { AxiosResponse } from "axios"
 import { IconType } from "react-icons"
 
 export type Children = {
@@ -55,7 +56,14 @@ export type Action = {
 export type State = {
     user: any;
     role: any
+    positions: Position[]
 };
+
+export type ApiResponse<T> = AxiosResponse<{
+    success: boolean,
+    message: string
+    data: T
+}>
 
 export type User = {
     firstname: string
@@ -74,4 +82,13 @@ export type ExecutiveUser = User & {
     status: "current" | "past"
 }
 
-export type ServerCallback =  ((data: any) => void) | (() => void)
+export type ServerCallback = ((data: any) => void) | (() => void)
+
+export type Position = {
+    _id: string
+    title: string
+    description: string
+    createdAt: string
+    updatedAt: string
+    __v?: number
+}

@@ -4,6 +4,8 @@ import type { Metadata } from 'next'
 import { Toaster } from "@/components/ui/toaster"
 import QueryProvider from '@/components/providers/query-provider'
 import ContextProvider from '@/components/providers/context-provider'
+import ToastProvider from '@/components/providers/toast-provider'
+import ModalProvider from '@/components/providers/modal-provider'
 
 export const metadata: Metadata = {
   title: `Home | ${APP_NAME}`,
@@ -21,10 +23,12 @@ export default function RootLayout({
       <body className="">
         <QueryProvider>
           <ContextProvider>
+            <ModalProvider />
             {children}
           </ContextProvider>
         </QueryProvider>
         <Toaster />
+        <ToastProvider />
       </body>
     </html>
   )
