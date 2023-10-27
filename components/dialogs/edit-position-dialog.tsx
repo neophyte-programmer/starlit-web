@@ -6,19 +6,21 @@ import {
     DialogHeader,
     DialogTitle
 } from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
+import EditPositionForm from "../forms/edit-position-form"
+import { Position } from "@/types"
 
-export default function EditPositionDialog({ data }: { data: any }) {
+export default function EditPositionDialog({ data }: { data: Position }) {
     console.log(data)
 
     return (
         <>
             <DialogHeader>
-                <DialogTitle className="poppins">Create a Position</DialogTitle>
+                <DialogTitle className="poppins">Edit {data.title} Position</DialogTitle>
                 <DialogDescription>
-                    Create a new position for your executive team
+                    Edit or modify an existing position
                 </DialogDescription>
             </DialogHeader>
+            <EditPositionForm data={data} />
         </>
     )
 }
