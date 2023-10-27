@@ -71,7 +71,7 @@ export const CHANGE_EXECUTIVE_STATUS = async (id: string, status: "current" | "p
             method: "PATCH",
             url: `/executive/status/${id}`,
             data: {
-                status
+                status,
             },
             headers: {
                 Authorization: `Bearer ${token}`
@@ -86,5 +86,6 @@ export const CHANGE_EXECUTIVE_STATUS = async (id: string, status: "current" | "p
 
     } catch (error: any) {
         throw new Error(error)
+        console.log(error)
     }
 }

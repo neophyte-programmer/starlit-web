@@ -27,6 +27,7 @@ import ViewPositionDialog from "../dialogs/view-position-dialog"
 import ViewExecutiveDialog from "../dialogs/view-executive-dialog"
 import BlockExecutiveDialog from "../dialogs/block-executive-dialog"
 import UnblockExecutiveDialog from "../dialogs/unblock-executive-dialog"
+import ChangeExecutiveStatusDialog from "../dialogs/change-executive-status-dialog"
 
 const actionsMap = {
     edit: (
@@ -186,8 +187,9 @@ export const executiveColumns: ColumnDef<ExecutiveUser>[] = [
                             </DialogItem>
                         }
 
+                        
                         <DialogItem triggerChildren={actionsMap.status}>
-                            <ViewExecutiveDialog data={row.original} />
+                            <ChangeExecutiveStatusDialog data={row.original} />
                         </DialogItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
