@@ -1,4 +1,5 @@
 "use client"
+import AddExecutiveDialog from "@/components/dialogs/add-executive-dialog"
 import BouncingBalls from "@/components/loaders/bouncing-balls"
 import { executiveColumns } from "@/components/table/columns"
 import { DataTable } from "@/components/table/data-table"
@@ -45,7 +46,7 @@ export default function ExecutiveUsers() {
     return (
         <TabsContent value="executive" className="w-full">
             <div className="flex items-center justify-between">
-                {/* <AddPositionDialog /> */}
+                <AddExecutiveDialog />
             </div>
 
             <DataTable filterableCol="name" columns={executiveColumns} data={data} title="executives" />
