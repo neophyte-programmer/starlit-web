@@ -30,9 +30,9 @@ export default function ViewPositionDialog({ data }: { data: Position }) {
                     {convertDate(createdAt)}
                 </p>
             </div>
-            <div className="w-full flex m flex-col gap-2">
+            <div className="w-full flex m flex-col text-sm gap-2">
                 <p className="text-xs uppercase">
-                    Created At
+                    Updated At
                 </p>
                 <p>
                     {convertDate(updatedAt)}

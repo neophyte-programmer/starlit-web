@@ -66,6 +66,7 @@ export type ApiResponse<T> = AxiosResponse<{
 }>
 
 export type User = {
+    _id: string
     firstname: string
     lastname: string
     email: string
@@ -73,12 +74,13 @@ export type User = {
     token: string
     createdAt: string
     updatedAt: string
+    blocked?: boolean
 }
 
 export type FounderUser = User 
 
 export type ExecutiveUser = User & {
-    position: string
+    position: Position 
     status: "current" | "past"
 }
 
