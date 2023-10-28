@@ -86,7 +86,7 @@ export default function ChangePasswordForm({ type }: { type: "founder" | "execut
             if (type === "executive") {
                 throw new Error("feature not available")
             } else if (type === "founder") {
-                
+
                 return CHANGE_FOUNDER_PASSWORD(user._id, values, user.token)
             } else {
                 throw new Error("Please login and try again")
@@ -104,7 +104,7 @@ export default function ChangePasswordForm({ type }: { type: "founder" | "execut
                 })
 
                 onLogout()
-                
+
             },
             onError: (error: any) => {
                 toast.error(error?.message || "Couldn't change password. Try again later", {
@@ -120,38 +120,38 @@ export default function ChangePasswordForm({ type }: { type: "founder" | "execut
 
     return (
         <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4" >
-            <FormField
-                control={form.control}
-                name="oldPassword"
-                render={({ field }) => (
-                    <FormItem>
-                        <FormControl>
-                            <Input type="password" className="text-black outline-0 focus:ring-0 focus-visible:ring-offset-0 " disabled={changePassword.isPending || logoutUser.isPending} placeholder="Old Password" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                )}
-            />
-            <FormField
-                control={form.control}
-                name="newPassword"
-                disabled={changePassword.isPending || logoutUser.isPending}
-                render={({ field }) => (
-                    <FormItem>
-                        <FormControl>
-                            <Input type="password" className="text-black outline-0 focus:ring-0 focus-visible:ring-offset-0  " placeholder="New Password" {...field} />
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4" >
+                <FormField
+                    control={form.control}
+                    name="oldPassword"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormControl>
+                                <Input type="password" className="text-black outline-0 focus:ring-0 focus-visible:ring-offset-0 " disabled={changePassword.isPending || logoutUser.isPending} placeholder="Old Password" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="newPassword"
+                    disabled={changePassword.isPending || logoutUser.isPending}
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormControl>
+                                <Input type="password" className="text-black outline-0 focus:ring-0 focus-visible:ring-offset-0  " placeholder="New Password" {...field} />
 
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                )}
-            />
-            <Button disabled={changePassword.isPending || logoutUser.isPending} className=" w-full" type="submit">
-                {changePassword.isPending || logoutUser.isPending && <Loader2 className="animate-spin h-4 w-4 mr-4" />}
-                Change
-            </Button>
-        </form>
-    </Form>
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <Button disabled={changePassword.isPending || logoutUser.isPending} className=" w-full" type="submit">
+                    {changePassword.isPending || logoutUser.isPending && <Loader2 className="animate-spin h-4 w-4 mr-4" />}
+                    Change
+                </Button>
+            </form>
+        </Form>
     )
 }
