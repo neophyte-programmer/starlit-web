@@ -94,3 +94,14 @@ export type Position = {
     updatedAt: string
     __v?: number
 }
+
+export type UpdateFounderPayload = {
+    firstname: string
+    lastname: string
+    mobile: string 
+}
+
+export type ChangePasswordPayload = {
+    oldPassword: string
+    newPassword: string
+}
