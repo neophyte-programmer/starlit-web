@@ -15,7 +15,7 @@ import {
     SelectItem,
     SelectTrigger,
     SelectValue,
-  } from "@/components/ui/select"
+} from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query"
 import * as z from "zod"
@@ -26,10 +26,11 @@ import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 import { Dispatch, SetStateAction, useState } from "react"
 import { redirect, useRouter } from "next/navigation"
-import { Position } from "@/types"
+import { ExecutiveUser, Position } from "@/types"
 import { BsEye, BsEyeSlash } from "react-icons/bs"
 import BouncingBalls from "../loaders/bouncing-balls"
 import { GET_ALL_POSITIONS } from "@/utils/server/positions"
+import { CREATE_EXECUTIVE } from "@/utils/server/executive"
 
 const phoneRegex = /^(\+\d{1,3}[-.\s]?)?(\d{1,4}[-.\s]?)(\d{1,4}[-.\s]?)(\d{1,9})$/
 
@@ -41,15 +42,15 @@ const formSchema = z.object({
     email: z.string().email("Please enter a valid email").min(1, "Enter an email"),
     position: z.string({
         required_error: "Please select an position to display.",
-      }).min(1, "Choose a position"),
+    }).min(1, "Choose a position"),
     password: z.string().min(6, "Enter at least 6 characters"),
 })
 
-export default function AddExecutiveForm({ onChange }: { onChange: Dispatch<SetStateAction<boolean>> }) {
+export default function AddExecutiveForm({ onChange }: { onChange: any }) {
     const queryClient = useQueryClient()
     const [{ user }, dispatch] = useStateValue()
     const router = useRouter()
-    
+
 
     const [viewPassword, setViewPassword] = useState(false)
 
@@ -66,6 +67,7 @@ export default function AddExecutiveForm({ onChange }: { onChange: Dispatch<SetS
             email: "",
             mobile: "",
             position: "",
+            password: "",
         },
     })
 
@@ -75,11 +77,10 @@ export default function AddExecutiveForm({ onChange }: { onChange: Dispatch<SetS
                 throw new Error("Please login again")
             }
 
-            
-            // return ADD_POSITION(values, user.token)
+            return CREATE_EXECUTIVE(values, user.token)
         },
         onSuccess: (data) => {
-            queryClient.setQueryData(['positions'], (oldData: Position[]) => {
+            queryClient.setQueryData(['executives'], (oldData: ExecutiveUser[]) => {
                 return oldData ? [
                     ...oldData,
                     data
@@ -89,6 +90,7 @@ export default function AddExecutiveForm({ onChange }: { onChange: Dispatch<SetS
     })
 
     function onSubmit(values: z.infer<typeof formSchema>) {
+        console.log(values)
         const toastSubmitId = toast.loading("Creating position ...")
 
         createExecutive.mutate(values, {
@@ -98,10 +100,9 @@ export default function AddExecutiveForm({ onChange }: { onChange: Dispatch<SetS
                 })
 
                 onChange(false)
-                router.refresh()
             },
             onError: (error: any) => {
-                toast.error(error?.response?.data || "Couldn't create position. Try again later", {
+                toast.error(error.message || "Couldn't create position. Try again later", {
                     id: toastSubmitId
                 })
                 console.log(error);
@@ -126,7 +127,7 @@ export default function AddExecutiveForm({ onChange }: { onChange: Dispatch<SetS
         refetchOnMount: true
     })
 
-    
+
 
     if (isPending) {
         return (<div className="w-full min-h-[60vh] flex items-center justify-center">
@@ -135,8 +136,9 @@ export default function AddExecutiveForm({ onChange }: { onChange: Dispatch<SetS
     }
 
     if (isError || data === undefined) {
-        toast.error("Something went wrong here")
-        return redirect("/admin")
+
+        error && toast.error(error.message)
+        return onChange(false)
     }
 
     return (
@@ -168,6 +170,18 @@ export default function AddExecutiveForm({ onChange }: { onChange: Dispatch<SetS
                 />
                 <FormField
                     control={form.control}
+                    name="mobile"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormControl>
+                                <Input className="text-black outline-0 focus:ring-0 focus-visible:ring-offset-0 " disabled={createExecutive.isPending} placeholder="Phone Number" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
                     name="email"
                     render={({ field }) => (
                         <FormItem>
@@ -179,54 +193,58 @@ export default function AddExecutiveForm({ onChange }: { onChange: Dispatch<SetS
                     )}
                 />
                 <FormField
-                        control={form.control}
-                        name="password"
-                        disabled={createExecutive.isPending}
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormControl>
-                                    <div className="flex relative ">
-                                        <Input type={viewPassword ? "text" : "password"} className="text-black outline-0 focus:ring-0 focus-visible:ring-offset-0  " placeholder="Password" {...field} />
-                                        <button onClick={toggleViewPassword} type="button" className="absolute right-0 rounded-lg  bg-neutral-200 flex items-center justify-center h-full aspect-square ">
+                    control={form.control}
+                    name="password"
+                    disabled={createExecutive.isPending}
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormControl>
+                                <div className="flex relative ">
+                                    <Input type={viewPassword ? "text" : "password"} className="text-black outline-0 focus:ring-0 focus-visible:ring-offset-0  " placeholder="Password" {...field} />
+                                    <button onClick={toggleViewPassword} type="button" className="absolute right-0 rounded-lg  bg-neutral-200 flex items-center justify-center h-full aspect-square ">
+                                        {
+                                            viewPassword ? <BsEyeSlash /> : <BsEye />
+                                        }
+                                    </button>
+                                </div>
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                {
+                    data && (
+                        <FormField
+                            control={form.control}
+                            name="position"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <Select disabled={data === undefined || createExecutive.isPending} onValueChange={field.onChange} defaultValue={field.value}>
+                                        <FormControl>
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="Choose a position for this executive" />
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent>
                                             {
-                                                viewPassword ? <BsEyeSlash /> : <BsEye />
+                                                data.map((position) => (
+                                                    <SelectItem key={position._id} value={position._id} >
+                                                        {position.title}
+                                                    </SelectItem>
+                                                ))
                                             }
-                                        </button>
-                                    </div>
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                <FormField
-          control={form.control}
-          name="position"
-          render={({ field }) => (
-            <FormItem>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Choose a position for this executive" />
-                  </SelectTrigger>
-                </FormControl>
-                      <SelectContent>
-                          {
-                              data.map((position) => (
-                                  <SelectItem key={position._id} value={position._id} >
-                                      {position.title}
-                                  </SelectItem>
-                              ))
-                          }
-                  
-                </SelectContent>
-              </Select>
-              
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-                
-                <Button disabled={createExecutive.isPending} className=" w-full" type="submit">
+
+                                        </SelectContent>
+                                    </Select>
+
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    )
+                }
+
+                <Button disabled={createExecutive.isPending}  className=" w-full" type="submit">
                     {createExecutive.isPending && <Loader2 className="animate-spin h-4 w-4 mr-4" />}
                     Submit
                 </Button>

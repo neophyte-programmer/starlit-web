@@ -2,6 +2,32 @@ import { AxiosResponse } from "axios"
 import Axios from "../axios"
 import { ApiResponse, ExecutiveUser, Position } from "@/types"
 
+type ExecutiveData = Pick<ExecutiveUser, "firstname" | "lastname" | "mobile" | "email"> & {
+    position: string
+    password: string
+}
+
+export const CREATE_EXECUTIVE = async (info: ExecutiveData, token: string) => {
+    try {
+        const response: ApiResponse<ExecutiveUser> = await Axios({
+            method: "POST",
+            url: `/executive`,
+            data: info,
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+
+        if (response.status === 200 || response.data.success) {
+            return response.data.data
+        } else {
+            throw new Error("oops")
+        }
+    } catch (error: any) {
+        throw new Error(error?.data?.message)
+    }
+}
+
 export const GET_ALL_EXECUTIVES = async (token: string) => {
     try {
         const response: ApiResponse<ExecutiveUser[]> = await Axios({
@@ -85,7 +111,7 @@ export const CHANGE_EXECUTIVE_STATUS = async (id: string, status: "current" | "p
         }
 
     } catch (error: any) {
-        throw new Error(error)
         console.log(error)
+        throw new Error(error)
     }
 }

@@ -49,7 +49,7 @@ export default function ExecutiveUsers() {
                 <AddExecutiveDialog />
             </div>
 
-            <DataTable filterableCol="name" columns={executiveColumns} data={data} title="executives" />
+            <DataTable filterableCol="email" columns={executiveColumns} data={data} title="executives" />
         </TabsContent>
 
     )

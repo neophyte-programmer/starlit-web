@@ -1,6 +1,6 @@
 "use client"
 
-import { ExecutiveUser, Position } from "@/types"
+import { ExecutiveUser, FounderUser, Position } from "@/types"
 import { ColumnDef } from "@tanstack/react-table"
 import { MoreHorizontal, ArrowUpDown } from "lucide-react"
 
@@ -116,9 +116,9 @@ export const positionColumns: ColumnDef<Position>[] = [
 
 export const executiveColumns: ColumnDef<ExecutiveUser>[] = [
     {
-        accessorKey: "name",
+        accessorKey: "firstname",
         header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="Name" />
+            <DataTableColumnHeader column={column} title="Full Name" />
         ),
         cell: ({ row }) => (
             <>
@@ -152,7 +152,7 @@ export const executiveColumns: ColumnDef<ExecutiveUser>[] = [
             <DataTableColumnHeader column={column} title="Status" />
         ),
         cell: ({ row }) => {
-            console.log(typeof row.original.position, row.original)
+            // console.log(typeof row.original.position, row.original)
             return (
                 <div className="capitalize">
                     {row.original.status}
@@ -197,4 +197,30 @@ export const executiveColumns: ColumnDef<ExecutiveUser>[] = [
         },
     }
 
+]
+
+export const founderColumns: ColumnDef<FounderUser>[] = [
+    {
+        accessorKey: "firstname",
+        header: ({ column }) => (
+            <DataTableColumnHeader column={column} title="Full Name" />
+        ),
+        cell: ({ row }) => (
+            <>
+                {row.original.firstname} {row.original.lastname}
+            </>
+        ),
+    },
+    {
+        accessorKey: "email",
+        header: ({ column }) => (
+            <DataTableColumnHeader column={column} title="Email" />
+        ),
+    },
+    {
+        accessorKey: "mobile",
+        header: ({ column }) => (
+            <DataTableColumnHeader column={column} title="Phone Number" />
+        ),
+    },
 ]
