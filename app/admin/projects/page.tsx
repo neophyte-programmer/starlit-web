@@ -7,6 +7,8 @@ import toast from "react-hot-toast"
 import { useStateValue } from "@/context/StateProvider"
 import { GET_ALL_PROJECTS } from "@/utils/server/project"
 import ProjectDBCard from "@/components/cards/project-db-card"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 export default function ProjectsPage() {
     const [{ user }, dispatch] = useStateValue()
@@ -38,6 +40,11 @@ export default function ProjectsPage() {
 
     return (
         <div className="w-full flex flex-col gap-4">
+            <Link className="ml-auto" href="/admin/projects/add">
+                <Button >
+                    Add New Project
+                </Button>
+            </Link>
             <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {
                     data?.map((proj) => (

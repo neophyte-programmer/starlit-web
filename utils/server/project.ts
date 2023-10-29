@@ -129,7 +129,7 @@ export const ADD_PROJECT_PICTURE = async (id: string, info: Media, token: string
     }
 }
 
-export const REMOVE_PROJECT_VIDEO = async (id: string, info: Media, token: string) => {
+export const REMOVE_PROJECT_VIDEO = async (id: string, info: string, token: string) => {
     try {
         const response: ApiResponse<ProjectSchema> = await Axios({
             method: "PATCH",
@@ -178,7 +178,7 @@ export const ADD_PROJECT_VIDEO = async (id: string, info: Media, token: string) 
 
 export const DELETE_PROJECT = async (id: string, token: string) => {
     try {
-        const response: ApiResponse<ProjectSchema[]> = await Axios({
+        const response: ApiResponse<any> = await Axios({
             method: "DELETE",
             url: `/project/${id}`,
             headers: {

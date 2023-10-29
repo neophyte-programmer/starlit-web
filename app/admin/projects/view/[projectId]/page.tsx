@@ -9,6 +9,7 @@ import Image from "next/image"
 import { convertDate } from "@/lib/utils"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import ReactPlayer from "react-player"
 
 
 
@@ -73,13 +74,13 @@ export default function ProjectIdPage({ params: { projectId } }: Props) {
 
             </div>
             <div className="flex flex-col gap-4 mt-4 col-span-1 md:col-span-2">
-                <div className="flex flex-col gap-2">
+                <section className="flex flex-col gap-2">
                     <p className="text-lg font-semibold tracking-tight">
                         Pictures
                     </p>
                     {
                         data.pictures.length > 0 ? (
-                            <div className="w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 ">
+                            <div className="w-full gap-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 ">
                                 {
                                     data.pictures.map((pic) => (
                                         <div className="relative aspect-square overflow-hidden rounded-lg" key={pic.id} >
@@ -100,18 +101,18 @@ export default function ProjectIdPage({ params: { projectId } }: Props) {
                         )
                     }
 
-                </div>
-                <div className="flex flex-col gap-2">
+                </section>
+                <section className="flex flex-col gap-2">
                     <p className="text-lg font-semibold tracking-tight">
                         Videos
                     </p>
                     {
                         data.videos.length > 0 ? (
-                            <div className="w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 ">
+                            <div className="w-full grid  ">
                                 {
-                                    data.pictures.map((vid) => (
-                                        <div className="relative aspect-square overflow-hidden rounded-lg" key={vid.id} >
-                                            <Image src={vid.url} alt={data.name} className="aspect-square object-cover" fill />
+                                    data.videos.map((vid) => (
+                                        <div className="w-max border" key={vid.id} >
+                                            <ReactPlayer controls url={vid.url} />
                                         </div>
                                     ))
                                 }
@@ -128,7 +129,7 @@ export default function ProjectIdPage({ params: { projectId } }: Props) {
                         )
                     }
 
-                </div>
+                </section>
             </div>
         </main>
     )
