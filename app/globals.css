@@ -101,3 +101,54 @@ h1,h2,h3,h4,h5,h6 {
     @apply lg:py-16 py-8 flex;
   }
 }
+
+.tiptap.ProseMirror {
+  outline: none;
+}
+
+.is-active {
+  background-color: #dadada;
+  border-radius: 2px;
+  padding: 4px
+}
+
+.tiptap h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+}
+.tiptap h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+.tiptap h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.tiptap h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+.tiptap h5 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.tiptap h6 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.tiptap blockquote {
+  background: #eee;
+  padding: 8px;
+  border-radius: 8px;
+  position: relative;
+}
+
+
+
