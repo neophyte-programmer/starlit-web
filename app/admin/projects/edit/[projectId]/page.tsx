@@ -29,7 +29,7 @@ export default function ProjectIdPage({ params: { projectId } }: Props) {
         queryKey: [projectId],
         queryFn: async () => {
             if (user.token) {
-                const projects = await GET_SINGLE_PROJECT(projectId, user.token)
+                const projects = await GET_SINGLE_PROJECT(projectId)
                 return projects.data
             }
 
