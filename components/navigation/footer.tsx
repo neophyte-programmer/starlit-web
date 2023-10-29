@@ -8,13 +8,13 @@ import NewsletterForm from "../forms/newsletter-form";
 
 export default function Footer() {
     return (
-        <footer className="bg-blue-950 min--[40vh] py-12 relative text-white overflow-hidden ">
-            <div className="flex items-start gap-2 absolute right-8 top-0 h-[170px] md:h-[200px]">
+        <footer className="bg-blue-950  py-12 relative text-white overflow-hidden ">
+            {/* <div className="flex items-start gap-2 absolute right-8 top-0 h-[170px] md:h-[200px]">
                 <div className="w-[20px] md:w-[30px] h-[85%] bg-starlit-pink" />
                 <div className="w-[20px] md:w-[30px] h-[50%] bg-starlit-pink" />
                 <div className="w-[20px] md:w-[30px] h-[70%] bg-starlit-pink" />
                 <div className="w-[20px] md:w-[30px] h-full bg-starlit-pink" />
-            </div>
+            </div> */}
             <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full h-full container">
                 <div className="w-full flex flex-col items-start gap-4 h-full md:border-r md:p-4 ">
                     <div className="flex flex-col items-start">

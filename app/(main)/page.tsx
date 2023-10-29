@@ -82,18 +82,18 @@ export default function Home() {
           <h1 className='text-3xl md:text-6xl font-semibold bg-clip-text bg-gradient-to-b from-starlit-pink to-purple-500 text-transparent '>Our vision</h1>
         </div>
       </section>
-      <section id="core-values" className='gap-12 flex flex-col w-full  items-center justify-center'>
-        <h1 className='font-semibold text-4xl'>
+      <div id="core-values" className='gap-8 py-8 relative flex flex-col w-full h-max items-center justify-center'>
+      <h1 className='font-semibold text-4xl'>
           Our Core Values
         </h1>
-        <div className='flex-1  w-full h-full grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 items-center justify-center'>
+        <div className='w-full h-full grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-4 items-center justify-center'>
           {
             coreValues.map((value, i) => (
-              <CoreValueCard key={i} value={value} />
+              <CoreValueCard key={value.title} value={value} />
             ))
           }
         </div>
-      </section>
+      </div>
       {/* <section id="partners" className='min-h-[40vh] flex flex-col gap-8' >
         <h3 className='font-semibold text-4xl'>
           Our Partners

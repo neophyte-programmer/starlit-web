@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input"
 import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { toast } from "@/components/ui/use-toast"
+import toast from "react-hot-toast"
 
 const formSchema = z.object({
     email: z.string().email({
@@ -36,9 +36,7 @@ export default function NewsletterForm() {
     })
 
     function onSubmit(values: z.infer<typeof formSchema>) {
-        toast({
-            description: "You have subscribed to our newsletter"
-          })
+        toast.success("Subscribed")
     }
 
 

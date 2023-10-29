@@ -9,12 +9,12 @@ export default function MainLayout({
     children: React.ReactNode
 }) {
     return (
-        <>
+        <div className='flex flex-col'>
             <main className=' '>
                 <Header />
                 {children}
             </main>
             <Footer />
-        </>
+        </div>
     )
 }
