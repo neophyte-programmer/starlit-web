@@ -49,7 +49,7 @@ export function convertDate(isoDate: string | Date) {
   const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
   
   // Format the date string
-  const formattedDate = `${day}${daySuffix} ${months[month]} ${year}, ${formattedHours}:${(minutes < 10 ? "0" : "")}${minutes}${ampm}`;
+  const formattedDate = `${day}${daySuffix} ${months[month]} ${year}`;
   
   return formattedDate;
 }

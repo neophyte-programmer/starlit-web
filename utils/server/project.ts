@@ -1,14 +1,11 @@
 import Axios from "../axios"
 import { ApiResponse, Media, ProjectSchema } from "@/types"
 
-export const GET_ALL_PROJECTS = async (token: string) => {
+export const GET_ALL_PROJECTS = async () => {
     try {
         const response: ApiResponse<ProjectSchema[]> = await Axios({
             method: "GET",
             url: `/project`,
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
         })
 
         if (response.status === 200 || response.data.success) {
@@ -21,14 +18,12 @@ export const GET_ALL_PROJECTS = async (token: string) => {
     }
 }
 
-export const GET_SINGLE_PROJECT = async (id: string, token: string) => {
+export const GET_SINGLE_PROJECT = async (id: string) => {
     try {
         const response: ApiResponse<ProjectSchema> = await Axios({
             method: "GET",
             url: `/project/${id}`,
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
+            
         })
 
         if (response.status === 200 || response.data.success) {

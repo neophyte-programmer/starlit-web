@@ -1,18 +1,38 @@
+"use client"
 import { APP_NAME } from "@/utils/constants";
 import { Metadata } from "next";
 import Breadcrumb from "@/components/navigation/breadcrumb";
 import { projects } from "@/utils/data";
 import ProjectCard from "@/components/cards/project-card";
+import { useQuery } from "@tanstack/react-query"
+import Link from "next/link"
+import { redirect } from "next/navigation"
+import BouncingBalls from "@/components/loaders/bouncing-balls";
+import toast from "react-hot-toast";
+import { GET_ALL_PROJECTS } from "@/utils/server/project";
 
 
 
-export const metadata: Metadata = {
-    title: `Projects | ${APP_NAME}`,
-    description: 'Our organization, Starlit, is driven by a profound vision to make a meaningful and positive impact on the lives of every child. With a passionate commitment to this vision, our mission is to comprehensively address the educational, physical, and emotional needs of children. Our overarching objective is to extend a helping hand and support the less privileged members of our society, transcending boundaries of age, gender, religion, and race.',
-    icons: { icon: '/images/logos/favicon.ico' }
-}
+// export const metadata: Metadata = {
+//     title: `Projects | ${APP_NAME}`,
+//     description: 'Our organization, Starlit, is driven by a profound vision to make a meaningful and positive impact on the lives of every child. With a passionate commitment to this vision, our mission is to comprehensively address the educational, physical, and emotional needs of children. Our overarching objective is to extend a helping hand and support the less privileged members of our society, transcending boundaries of age, gender, religion, and race.',
+//     icons: { icon: '/images/logos/favicon.ico' }
+// }
 
 export default function ProjectsPage() {
+    const { isPending, isError, data, error, isSuccess } = useQuery({
+        queryKey: ['projects'],
+        queryFn: async () => {
+            const projects = await GET_ALL_PROJECTS()
+            return projects.data
+        },
+        retry: 3,
+        staleTime: 300,
+        refetchOnMount: true
+    })
+
+    
+
     return (
         <>
             <Breadcrumb
@@ -41,13 +61,32 @@ export default function ProjectsPage() {
                             Follow our journeys with others
                         </p>
                     </div>
-                    <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-4 md:gap-8">
+                    <>
                         {
-                            projects.map((project) => (
-                                <ProjectCard key={project.slug} project={project} />
-                            ))
-                            }
-                    </div>
+                            isError || data === undefined ? <>
+                                An error occured. Please refresh the page
+                            </> : (
+                                <>
+                                    {
+                                        isPending ? <BouncingBalls /> : (
+                                            <>
+                                                <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-4 md:gap-8">
+
+                                                    {
+                                                        data.map((project) => (
+                                                            <ProjectCard key={project._id} project={project} />
+                                                        ))
+                                                    }
+                                                </div>
+                                            </>
+                                        )
+                                    }
+                                </>
+                            )
+                        }
+                    </>
+
+
 
                 </section>
             </main>

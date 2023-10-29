@@ -8,22 +8,22 @@ export const coreValues: CoreValue[] = [
     {
         icon: MdVolunteerActivism,
         title: "Compassion",
-        desc: "We show empathy and care for the well-being of the children in Ghana, understanding their unique needs and challenges.",
+        desc: "Our NGO is driven by a deep sense of empathy and care guiding our actions for those we serve.",
     },
     {
         icon: FaEquals,
         title: "Equality",
-        desc: "We ensure that all children, regardless of their background or circumstances, have equal access to opportunities and support",
+        desc: "We are unwavering in our pursuit of equal opportunities and rights for all individuals, irrespective of their circumstances.",
     },
     {
         icon: BsFillMicFill,
         title: "Advocacy",
-        desc: "We show empathy and care for the well-being of the children in Ghana, understanding their unique needs and challenges.",
+        desc: "Advocacy is at the forefront of our mission, as we tirelessly champion the needs and rights of those in need in society.",
     },
     {
         icon: IoIosPeople,
         title: "Community-Centered",
-        desc: "We show empathy and care for the well-being of the children in Ghana, understanding their unique needs and challenges.",
+        desc: "We place the community at the heart of our efforts, engaging and collaborating with local stakeholders to empower individuals through our initiatives",
     },
 ]
 
@@ -65,23 +65,23 @@ export const footerSocials: SocialLink[] = [
 export const founders: Founder[] = [
     {
         img: "/images/freepik/woman.jpg",
-        name: "Nana Akua Aniagyei Amponsah",
-        about: ` Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis porro quod voluptatem? Voluptate quaerat reprehenderit natus cupiditate rerum ullam necessitatibus, dolor molestiae unde, nesciunt assumenda fugit et. Quisquam, sint hic! `,
-        socials: {
-            facebook: "https://facebook.com",
-            instagram: "https://instagram.com",
-            linkedin: "https://linkedin.com",
-            twitter: "https://twitter.com"
-        }
-    },
-    {
-        img: "/images/freepik/man.avif",
-        name: "Lorem Ipsum Dolor",
+        name: "Matilda Kyerewaa Adjah",
         about: ` Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis porro quod voluptatem? Voluptate quaerat reprehenderit natus cupiditate rerum ullam necessitatibus, dolor molestiae unde, nesciunt assumenda fugit et. Quisquam, sint hic! `,
         socials: {
             // facebook: "https://facebook.com",
-            instagram: "https://instagram.com",
-            linkedin: "https://linkedin.com",
+            instagram: "https://www.instagram.com/matildaadjah/",
+            linkedin: "https://www.linkedin.com/in/matilda-kyerewaa-adjah/",
+            // twitter: "https://twitter.com"
+        }
+    },
+    {
+        img: "/images/nana-akua.jpeg",
+        name: "Nana Akua Aniagyei Amponsah",
+        about: ` Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis porro quod voluptatem? Voluptate quaerat reprehenderit natus cupiditate rerum ullam necessitatibus, dolor molestiae unde, nesciunt assumenda fugit et. Quisquam, sint hic! `,
+        socials: {
+            // facebook: "https://facebook.com",
+            // instagram: "https://instagram.com",
+            linkedin: "https://www.linkedin.com/in/nana-akua-aniagyei-amponsah-078721221?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
             // twitter: "https://twitter.com"
         }
     },

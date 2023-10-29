@@ -53,10 +53,8 @@ export default function FounderInfoGraphics() {
     const projectQuery = useQuery({
         queryKey: ['projects'],
         queryFn: async () => {
-            if (user.token) {
-                const executives = await GET_ALL_PROJECTS(user.token)
+                const executives = await GET_ALL_PROJECTS()
                 return executives.data
-            }
         },
     })
 

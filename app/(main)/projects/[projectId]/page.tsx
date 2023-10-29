@@ -1,27 +1,25 @@
 "use client"
+
+import Breadcrumb from "@/components/navigation/breadcrumb";
+import { projects } from "@/utils/data";
+import { redirect, usePathname } from "next/navigation"
+import { ref, listAll, getDownloadURL } from "firebase/storage"
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { storage } from "@/firebase.config";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import toast from "react-hot-toast";
+import BouncingBalls from "@/components/loaders/bouncing-balls";
+import { GET_SINGLE_PROJECT } from "@/utils/server/project";
 import { useQuery } from "@tanstack/react-query"
-import { redirect } from "next/navigation"
-import toast from "react-hot-toast"
-import { useStateValue } from "@/context/StateProvider"
-import { GET_SINGLE_PROJECT } from "@/utils/server/project"
-import BouncingBalls from "@/components/loaders/bouncing-balls"
-import Image from "next/image"
-import { convertDate } from "@/lib/utils"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
 import ReactPlayer from "react-player"
+import { convertDate } from "@/lib/utils";
 
 
 
-interface Props {
-    params: {
-        projectId: string
-    }
-}
-
-export default function ProjectIdPage({ params: { projectId } }: Props) {
-    const [{ user }, dispatch] = useStateValue()
-
+export default function ProjectSlugPage({ params: { projectId } }: { params: { projectId: string } }) {
+   
     const { isPending, isError, data, error, isSuccess } = useQuery({
         queryKey: [projectId],
         queryFn: async () => {
@@ -43,9 +41,9 @@ export default function ProjectIdPage({ params: { projectId } }: Props) {
         toast.error("Something went wrong here")
         return redirect("/admin")
     }
-
     return (
-        <main className="grid md:grid-cols-2 gap-y-2 gap-x-4">
+        <>
+            <main className="grid md:grid-cols-2 gap-y-2 gap-x-4 container">
             <div className="relative aspect-square overflow-hidden rounded-lg">
                 <Image src={data.thumbnail} alt={data.name} className="aspect-square object-cover" fill />
             </div>
@@ -62,12 +60,7 @@ export default function ProjectIdPage({ params: { projectId } }: Props) {
                 <p className="text-neutral-500 mt-2">
                     Date: <span className="text-black">{convertDate(data.date)}</span>
                 </p>
-                <p className="text-neutral-500 mt-2">
-                    Created At: <span className="text-black">{convertDate(data.createdAt)}</span>
-                </p>
-                <p className="text-neutral-500 mt-2">
-                    Updated At: <span className="text-black">{convertDate(data.updatedAt)}</span>
-                </p>
+                
 
             </div>
             <div className="flex flex-col gap-4 mt-4 col-span-1 md:col-span-2">
@@ -77,7 +70,7 @@ export default function ProjectIdPage({ params: { projectId } }: Props) {
                     </p>
                     {
                         data.pictures.length > 0 ? (
-                            <div className="w-full gap-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 ">
+                            <div className="w-full gap-4 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 ">
                                 {
                                     data.pictures.map((pic) => (
                                         <div className="relative aspect-square overflow-hidden rounded-lg" key={pic.id} >
@@ -89,11 +82,7 @@ export default function ProjectIdPage({ params: { projectId } }: Props) {
                         ) : (
                             <div className="flex flex-col gap-2">
                                 There are no pictures for this project yet
-                                <Link className="" href={`/admin/projects/edit/${data._id}`} >
-                                    <Button className="">
-                                        Edit Project
-                                    </Button>
-                                </Link>
+                                
                             </div>
                         )
                     }
@@ -105,7 +94,7 @@ export default function ProjectIdPage({ params: { projectId } }: Props) {
                     </p>
                     {
                         data.videos.length > 0 ? (
-                            <div className="w-full grid  ">
+                            <div className="w-full grid grid-cols-1 gap-6 lg:grid-c  ">
                                 {
                                     data.videos.map((vid) => (
                                         <div className="w-max border" key={vid.id} >
@@ -117,11 +106,7 @@ export default function ProjectIdPage({ params: { projectId } }: Props) {
                         ) : (
                             <div className="flex flex-col gap-2">
                                 There are no videos for this project yet
-                                <Link className="" href={`/admin/projects/edit/${data._id}`} >
-                                    <Button className="">
-                                        Edit Project
-                                    </Button>
-                                </Link>
+                                
                             </div>
                         )
                     }
@@ -129,5 +114,6 @@ export default function ProjectIdPage({ params: { projectId } }: Props) {
                 </section>
             </div>
         </main>
+        </>
     )
 }

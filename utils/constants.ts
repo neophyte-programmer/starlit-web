@@ -4,7 +4,7 @@ export const CONTACT = {
         primary: "starlitchildghana@gmail.com",
     },
     phone: {
-        primary: "0546990587",
+        primary: "055 900 9258",
         // secondary: "+233 123 456 789",
     }
 }

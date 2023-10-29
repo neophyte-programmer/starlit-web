@@ -16,11 +16,8 @@ export default function ProjectsPage() {
     const { isPending, isError, data, error, isSuccess } = useQuery({
         queryKey: ['projects'],
         queryFn: async () => {
-            if (user.token) {
-                const projects = await GET_ALL_PROJECTS(user.token)
+                const projects = await GET_ALL_PROJECTS()
                 return projects.data
-            }
-
         },
         retry: 3,
         staleTime: 300,
