@@ -24,7 +24,7 @@ export function getTitleFromPath(path: string): string {
   return title
 }
 
-export function convertDate(isoDate: string) {
+export function convertDate(isoDate: string | Date) {
   const date = new Date(isoDate);
   
   // Define arrays for month names and suffixes for days

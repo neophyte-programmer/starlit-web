@@ -16,10 +16,12 @@ import { ProjectSchema } from "@/types";
 import { DELETE_PROJECT } from "@/utils/server/project";
 import toast from "react-hot-toast";
 import { Loader2 } from "lucide-react";
+import { redirect, useRouter } from "next/navigation";
 
 export default function DeleteProjectDialog({ data }: { data: ProjectSchema }) {
     const queryClient = useQueryClient()
     const [{ user }, dispatch] = useStateValue()
+    const router = useRouter()
 
     const deleteProject = useMutation({
         mutationFn: () => {
@@ -34,26 +36,17 @@ export default function DeleteProjectDialog({ data }: { data: ProjectSchema }) {
                 return oldData ? oldData.filter((item) => item._id !== data._id) : oldData
             })
             toast.success("Deleted project successfully")
+            router.push("/admin/projects")
         },
         onError: (error: any) => {
             toast.error(error?.response?.data || "Couldn't delete project. Try again later")
-
         }
     })
 
     function onSubmit() {
-        // const toastSubmitId = toast.loading("Deleting position ...")
-
-        deleteProject.mutate(undefined, {
-            onSuccess: (data) => {
-                toast.success(`Deleted position successfully`)
-            },
-            onError: (error: any) => {
-                toast.error(error?.response?.data || "Couldn't create position. Try again later")
-                console.log(error);
-            }
-        })
+        deleteProject.mutate(undefined)
     }
+
     return (
         <Dialog>
             <DialogTrigger asChild>

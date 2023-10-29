@@ -40,18 +40,39 @@ export default function ProjectsPage() {
 
     return (
         <div className="w-full flex flex-col gap-4">
-            <Link className="ml-auto" href="/admin/projects/add">
-                <Button >
-                    Add New Project
-                </Button>
-            </Link>
-            <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {
-                    data?.map((proj) => (
-                        <ProjectDBCard project={proj} key={proj._id} />
-                    ))
-                }
-            </main >
+            {
+                data.length <= 0 ? <>
+                    <div className="w-full h-full min-h-[70vh] flex items-center flex-col justify-center gap-4">
+                        <p className="text-2xl font-semibold tracking-tighter">
+                            No projects yet
+                        </p>
+                        <p>
+                            There are no projects at the moment
+                        </p>
+                        <Link className="" href="/admin/projects/add">
+                            <Button >
+                                Add New Project
+                            </Button>
+                        </Link>
+                   </div>
+                </> : (
+                    <>
+                        <Link className="ml-auto" href="/admin/projects/add">
+                            <Button >
+                                Add New Project
+                            </Button>
+                        </Link>
+                        <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                            {
+                                data?.map((proj) => (
+                                    <ProjectDBCard project={proj} key={proj._id} />
+                                ))
+                            }
+                        </main >
+                    </>
+                )
+            }
+
         </div>
     )
 }
