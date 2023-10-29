@@ -1,6 +1,6 @@
 "use client"
 
-import { ExecutiveUser, FounderUser, Position } from "@/types"
+import { Enquiry, ExecutiveUser, FounderUser, Position } from "@/types"
 import { ColumnDef } from "@tanstack/react-table"
 import { MoreHorizontal, ArrowUpDown } from "lucide-react"
 
@@ -28,6 +28,8 @@ import ViewExecutiveDialog from "../dialogs/view-executive-dialog"
 import BlockExecutiveDialog from "../dialogs/block-executive-dialog"
 import UnblockExecutiveDialog from "../dialogs/unblock-executive-dialog"
 import ChangeExecutiveStatusDialog from "../dialogs/change-executive-status-dialog"
+import ViewEnquiryDialog from "../dialogs/view-enquiry-dialog"
+import DeleteEnquiryDialog from "../dialogs/delete-enquiry-dialog"
 
 const actionsMap = {
     edit: (
@@ -223,4 +225,54 @@ export const founderColumns: ColumnDef<FounderUser>[] = [
             <DataTableColumnHeader column={column} title="Phone Number" />
         ),
     },
+]
+
+export const enquiryColumns: ColumnDef<Enquiry>[] = [
+    {
+        accessorKey: "title",
+        header: ({ column }) => (
+            <DataTableColumnHeader column={column} title="Title" />
+        ),
+    },
+    {
+        accessorKey: "fullname",
+        header: ({ column }) => (
+            <DataTableColumnHeader column={column} title="Full Name" />
+        ),
+    },
+    {
+        accessorKey: "email",
+        header: ({ column }) => (
+            <DataTableColumnHeader column={column} title="Email" />
+        ),
+    },
+
+    {
+
+        id: "actions",
+        cell: ({ row }) => { 
+            return (
+                <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" className="cursor-pointer h-8 w-8 p-0">
+                            <span className="sr-only">Open menu</span>
+                            <MoreHorizontal className="h-4 w-4" />
+                        </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+
+                        <DialogItem triggerChildren={actionsMap.view}>
+                            <ViewEnquiryDialog data={row.original} />
+                        </DialogItem>
+                        <DialogItem triggerChildren={actionsMap.delete}>
+                            <DeleteEnquiryDialog data={row.original} />
+                        </DialogItem>
+
+                        
+                    </DropdownMenuContent>
+                </DropdownMenu>
+            )
+        }
+    }
 ]

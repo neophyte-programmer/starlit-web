@@ -125,3 +125,15 @@ export type ChangePasswordPayload = {
     oldPassword: string
     newPassword: string
 }
+
+export type Enquiry = {
+    fullname: string
+    email: string
+    mobile: string
+    title: string
+    message: string
+    _id: string
+    __v?: number
+    createdAt: string
+    updatedAt: string
+}
