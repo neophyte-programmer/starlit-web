@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { v4 as uuid } from 'uuid'
  
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -11,6 +12,13 @@ export function getTitleFromPath(path: string): string {
 
   if (title === "admin" || title === "executive") {
     return "dashboard"
+  }
+
+  if (pathArray[pathArray.length - 2] === "edit" && pathArray[pathArray.length - 3] === "projects") {
+    return "Edit Project"
+  }
+  if (pathArray[pathArray.length - 2] === "view" && pathArray[pathArray.length - 3] === "projects") {
+    return "View Project"
   }
   
   return title
@@ -44,4 +52,9 @@ export function convertDate(isoDate: string) {
   const formattedDate = `${day}${daySuffix} ${months[month]} ${year}, ${formattedHours}:${(minutes < 10 ? "0" : "")}${minutes}${ampm}`;
   
   return formattedDate;
+}
+
+export const getRandomID = (length?: number) => {
+  if(length) return uuid().slice(0, length)
+  return uuid().slice(0, 8)
 }

@@ -95,6 +95,26 @@ export type Position = {
     __v?: number
 }
 
+export type Media = {
+    id: string
+    ref: string
+    url: string
+}
+
+export type ProjectSchema = {
+    _id: string
+    name: string
+    location: string
+    description: string
+    thumbnail: string
+    date: string | Date | any
+    pictures: Media[]
+    videos: Media[]
+    __v?: number
+    createdAt: string
+    updatedAt: string
+}
+
 export type UpdateFounderPayload = {
     firstname: string
     lastname: string
