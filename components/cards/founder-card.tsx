@@ -6,7 +6,7 @@ import { BsFacebook, BsLinkedin, BsTwitter } from "react-icons/bs";
 import { AiFillInstagram} from "react-icons/ai";
 
 export default function FounderCard({ data }: { data: Founder }) {
-    const { about, img, name, socials } = data
+    const { img, name, socials } = data
     return (
         <article className="w-full text-center group flex flex-col items-center justify-center gap-4 p-4" >
             <div className="aspect-square rounded-full relative w-[220px] mx-auto overflow-hidden">
@@ -15,9 +15,7 @@ export default function FounderCard({ data }: { data: Founder }) {
             <h1 className="font-semibold text-2xl">
                 {name}
             </h1>
-            <p className="italic text-neutral-500 text-sm text-center">
-                {about}
-            </p>
+           
 
             {
                 socials && (

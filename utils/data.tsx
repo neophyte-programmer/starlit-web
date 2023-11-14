@@ -64,7 +64,7 @@ export const footerSocials: SocialLink[] = [
 
 export const founders: Founder[] = [
     {
-        img: "/images/freepik/woman.jpg",
+        img: "/images/matilda.jpeg",
         name: "Matilda Kyerewaa Adjah",
         socials: {
             // facebook: "https://facebook.com",
