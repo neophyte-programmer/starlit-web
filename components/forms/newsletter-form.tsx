@@ -16,6 +16,8 @@ import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { SUBSCRIBE } from "@/utils/server/newsletter"
 
 const formSchema = z.object({
     email: z.string().email({
@@ -27,6 +29,7 @@ const formSchema = z.object({
 
 
 export default function NewsletterForm() {
+    const queryClient = useQueryClient()
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -35,8 +38,31 @@ export default function NewsletterForm() {
         },
     })
 
+    const subscribeToNewsletter = useMutation({
+        mutationFn: (values: z.infer<typeof formSchema>) => {
+            return SUBSCRIBE(values.email)
+        },
+    })
+
     function onSubmit(values: z.infer<typeof formSchema>) {
-        toast.success("Subscribed")
+            const toastSubmitId = toast.loading("Subscribing ...")
+    
+            subscribeToNewsletter.mutate(values, {
+                onSuccess: (data) => {
+                    toast.success(`Subscribed`, {
+                        id: toastSubmitId
+                    })
+                },
+                onError: (error: any) => {
+                    toast.error(error?.response?.data || "Couldn't subscribe. Try again later", {
+                        id: toastSubmitId
+                    })
+                    console.log(error);
+    
+                }
+    
+            })
+    
     }
 
 

@@ -31,6 +31,7 @@ export default function ProjectsPage() {
         refetchOnMount: true
     })
 
+    console.log(error, isPending)
     
 
     return (
