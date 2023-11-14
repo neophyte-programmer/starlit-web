@@ -66,7 +66,6 @@ export const founders: Founder[] = [
     {
         img: "/images/freepik/woman.jpg",
         name: "Matilda Kyerewaa Adjah",
-        about: ` Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis porro quod voluptatem? Voluptate quaerat reprehenderit natus cupiditate rerum ullam necessitatibus, dolor molestiae unde, nesciunt assumenda fugit et. Quisquam, sint hic! `,
         socials: {
             // facebook: "https://facebook.com",
             instagram: "https://www.instagram.com/matildaadjah/",
@@ -77,7 +76,6 @@ export const founders: Founder[] = [
     {
         img: "/images/nana-akua.jpeg",
         name: "Nana Akua Aniagyei Amponsah",
-        about: ` Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis porro quod voluptatem? Voluptate quaerat reprehenderit natus cupiditate rerum ullam necessitatibus, dolor molestiae unde, nesciunt assumenda fugit et. Quisquam, sint hic! `,
         socials: {
             // facebook: "https://facebook.com",
             // instagram: "https://instagram.com",

@@ -25,7 +25,6 @@ export type SocialLink = {
 export type Founder = {
     img: string
     name: string
-    about: string
     socials?: {
         facebook?: string
         twitter?: string
