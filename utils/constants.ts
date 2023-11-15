@@ -8,3 +8,9 @@ export const CONTACT = {
         // secondary: "+233 123 456 789",
     }
 }
+
+export const MOMO_DETAILS = {
+    number: "0206272355",
+    name: "Ruth Dedo Opata",
+    service: "Vodafone"
+}

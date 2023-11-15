@@ -172,3 +172,23 @@ export const projects: Project[] = [
         pictures: []
     },
 ]
+
+export const featuredCauses = [
+    {
+        thumbnail: "education.jpg",
+        cause: "Education",
+        description: `Supporting brighter futures! 🌟 We on a mission to light up young minds by ensuring every child has access to quality education. Through our dedicated efforts, we provide financial aid, school supplies, and educational resources to underprivileged children. Join us in building a world where education knows no boundaries. Together, we can make a difference, one child at a time. 📚✨`
+    },
+    {
+        thumbnail: "hands.jpg",
+        cause: "Health",
+        description: `Caring for our community's well-being! ❤️ Cause number two focuses on health initiatives that impact lives. From medical outreach programs to promoting healthy living, we're dedicated to creating a healthier and happier community. Join us in making wellness a priority and spreading the message of good health far and wide. Together, we can build a stronger, healthier world! 🌍💪`
+    },
+    {
+        thumbnail: "food.jpg",
+        cause: "Food",
+        description: `Nourishing bodies, nurturing lives! 🍲 Cause number three is all about ensuring no one goes to bed hungry. Through food drives, community kitchens, and sustainable agriculture projects, we're working towards a world where everyone has access to nutritious meals. Join us in the fight against hunger and let's create a future where every plate is full and every belly is satisfied. 🌽🍚`
+    }
+]
+
+

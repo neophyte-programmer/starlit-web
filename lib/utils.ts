@@ -1,4 +1,5 @@
 import { type ClassValue, clsx } from "clsx"
+import toast from "react-hot-toast"
 import { twMerge } from "tailwind-merge"
 import { v4 as uuid } from 'uuid'
  
@@ -57,4 +58,13 @@ export function convertDate(isoDate: string | Date) {
 export const getRandomID = (length?: number) => {
   if(length) return uuid().slice(0, length)
   return uuid().slice(0, 8)
+}
+
+export async function copyToClipboard(text: string) {
+  try {
+    await navigator.clipboard.writeText(text);
+    toast.success("Copied to clipboard");
+  } catch (err) {
+    toast.error("Copied to clipboard");
+  }
 }
