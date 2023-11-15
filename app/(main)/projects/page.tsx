@@ -1,23 +1,9 @@
 "use client"
 import Breadcrumb from "@/components/navigation/breadcrumb";
-import { projects } from "@/utils/data";
 import ProjectCard from "@/components/cards/project-card";
 import { useQuery } from "@tanstack/react-query"
-import Link from "next/link"
-import { redirect } from "next/navigation"
 import BouncingBalls from "@/components/loaders/bouncing-balls";
-import toast from "react-hot-toast";
 import { GET_ALL_PROJECTS } from "@/utils/server/project";
-// import { APP_NAME } from "@/utils/constants";
-// import { Metadata } from "next";
-
-
-
-// export const metadata: Metadata = {
-//     title: `Projects | ${APP_NAME}`,
-//     description: 'Our organization, Starlit, is driven by a profound vision to make a meaningful and positive impact on the lives of every child. With a passionate commitment to this vision, our mission is to comprehensively address the educational, physical, and emotional needs of children. Our overarching objective is to extend a helping hand and support the less privileged members of our society, transcending boundaries of age, gender, religion, and race.',
-//     icons: { icon: '/images/logos/favicon.ico' }
-// }
 
 export default function ProjectsPage() {
     const { isPending, isError, data, error, isSuccess } = useQuery({

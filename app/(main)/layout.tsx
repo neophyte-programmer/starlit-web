@@ -1,7 +1,5 @@
 import Footer from '@/components/navigation/footer'
 import Header from '@/components/navigation/header'
-import { APP_NAME } from '@/utils/constants'
-import type { Metadata } from 'next'
 
 export default function MainLayout({
     children,

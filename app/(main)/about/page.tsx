@@ -1,10 +1,8 @@
 import FounderCard from "@/components/cards/founder-card";
 import TeamCard from "@/components/cards/team-card";
 import Breadcrumb from "@/components/navigation/breadcrumb";
-import { Button } from "@/components/ui/button";
-import { founders, team } from "@/utils/data";
+import { founders } from "@/utils/data";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function AboutPage() {
     return (

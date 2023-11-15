@@ -1,7 +1,5 @@
 "use client"
 import AuthProvider from '@/components/providers/auth-provider'
-import { APP_NAME } from '@/utils/constants'
-import type { Metadata } from 'next'
 import LoadingScreen from '@/components/loaders/loading-screen'
 import { useState, useEffect } from 'react'
 import FounderHeader from '@/components/navigation/founder-header'

@@ -1,7 +1,6 @@
-import ActionTooltip from '@/components/action-tooltip'
 import CoreValueCard from '@/components/cards/core-value-card'
 import { Button } from '@/components/ui/button'
-import { coreValues, partners } from '@/utils/data'
+import { coreValues } from '@/utils/data'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -94,22 +93,7 @@ export default function Home() {
           }
         </div>
       </div>
-      {/* <section id="partners" className='min-h-[40vh] flex flex-col gap-8' >
-        <h3 className='font-semibold text-4xl'>
-          Our Partners
-        </h3>
-        <div className='grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-4'>
-          {
-            partners.map((partner, i) => (
-              <ActionTooltip label={partner.name} side='top'   key={i}>
-                <div className='relative aspect-square w-full h-full'>
-                  <Image className='' fill alt={partner.name} src={`/images/partners${partner.img}`} />
-                  </div>
-              </ActionTooltip>
-            ))
-          }
-        </div>
-      </section> */}
+     
     </main>
   )
 }

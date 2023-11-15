@@ -2,7 +2,7 @@
 import BouncingBalls from "@/components/loaders/bouncing-balls"
 import { founderColumns } from "@/components/table/columns"
 import { DataTable } from "@/components/table/data-table"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import {  TabsContent } from "@/components/ui/tabs"
 import { GET_ALL_FOUNDERS } from "@/utils/server/founder"
 import { redirect } from "next/navigation"
 import toast from "react-hot-toast"

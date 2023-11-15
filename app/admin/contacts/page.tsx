@@ -1,9 +1,7 @@
 "use client"
-import AddExecutiveDialog from "@/components/dialogs/add-executive-dialog"
 import BouncingBalls from "@/components/loaders/bouncing-balls"
-import { enquiryColumns, executiveColumns } from "@/components/table/columns"
+import { enquiryColumns } from "@/components/table/columns"
 import { DataTable } from "@/components/table/data-table"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useStateValue } from "@/context/StateProvider"
 import { GET_ALL_ENQUIRIES } from "@/utils/server/enquiry"
 import { useQuery } from "@tanstack/react-query"
@@ -14,7 +12,7 @@ import toast from "react-hot-toast"
 export default function ContactPage() {
     const [{ user }, dispatch] = useStateValue()
 
-    const { isPending, isError, data, error, isSuccess } = useQuery({
+    const { isPending, isError, data } = useQuery({
         queryKey: ['enquiries'],
         queryFn: async () => {
             if (user.token) {

@@ -1,13 +1,6 @@
 "use client"
 
-import Breadcrumb from "@/components/navigation/breadcrumb";
-import { projects } from "@/utils/data";
-import { redirect, usePathname } from "next/navigation"
-import { ref, listAll, getDownloadURL } from "firebase/storage"
-
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { storage } from "@/firebase.config";
-import { useEffect, useState } from "react";
+import { redirect } from "next/navigation"
 import Image from "next/image";
 import toast from "react-hot-toast";
 import BouncingBalls from "@/components/loaders/bouncing-balls";
