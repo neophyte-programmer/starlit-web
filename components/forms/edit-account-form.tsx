@@ -19,6 +19,7 @@ import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 import { LOGOUT_USER } from "@/utils/server/auth"
 import { UPDATE_FOUNDER } from "@/utils/server/founder"
+import { UPDATE_EXECUTIVE } from "@/utils/server/executive"
 
 const phoneRegex = /^(\+\d{1,3}[-.\s]?)?(\d{1,4}[-.\s]?)(\d{1,4}[-.\s]?)(\d{1,9})$/
 
@@ -51,7 +52,7 @@ export default function EditAccountForm({ type }: { type: "founder" | "executive
                 throw new Error("feature not available")
             } else if (type === "founder") {
 
-                return UPDATE_FOUNDER(user._id, values, user.token)
+                return UPDATE_EXECUTIVE(user._id, values, user.token)
             } else {
                 throw new Error("Please login and try again")
             }

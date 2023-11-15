@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios"
 import Axios from "../axios"
-import { ApiResponse, ExecutiveUser, Position } from "@/types"
+import { ApiResponse, ChangePasswordPayload, ExecutiveUser, Position, UpdateFounderPayload } from "@/types"
 
 type ExecutiveData = Pick<ExecutiveUser, "firstname" | "lastname" | "mobile" | "email"> & {
     position: string
@@ -112,6 +112,49 @@ export const CHANGE_EXECUTIVE_STATUS = async (id: string, status: "current" | "p
 
     } catch (error: any) {
         console.log(error)
+        throw new Error(error)
+    }
+}
+
+export const UPDATE_EXECUTIVE = async (id: string, info: UpdateFounderPayload, token: string) => {
+    try {
+        const response: ApiResponse<ExecutiveUser> = await Axios({
+            method: "PUT",
+            url: `/executive/${id}`,
+            data: info,
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+
+        if (response.status === 200 || response.data.success) {
+            return response.data
+        } else {
+            throw new Error("oops")
+        }
+    } catch (error: any) {
+        throw new Error(error)
+    }
+}
+
+export const CHANGE_EXECUTIVE_PASSWORD = async (id: string, info: ChangePasswordPayload ,token: string) => {
+    try {
+        const response: ApiResponse<ExecutiveUser> = await Axios({
+            method: "PATCH",
+            url: `/executive/change-password/${id}`,
+            data: info,
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+
+        if (response.status === 200 || response.data.success) {
+            return response.data
+        } else {
+            throw new Error("oops")
+        }
+
+    } catch (error: any) {
         throw new Error(error)
     }
 }

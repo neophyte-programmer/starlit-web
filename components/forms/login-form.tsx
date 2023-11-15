@@ -78,6 +78,7 @@ export default function LoginForm({ type }: { type: "founder" | "executive" }) {
                 if (typeof window !== "undefined") {
                     localStorage.setItem("user", JSON.stringify(data))
                     localStorage.setItem("role", JSON.stringify(type))
+                    location.reload()
                 }
             },
             onError: (error: any) => {

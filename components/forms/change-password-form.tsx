@@ -19,6 +19,7 @@ import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 import { LOGOUT_USER } from "@/utils/server/auth"
 import { CHANGE_FOUNDER_PASSWORD } from "@/utils/server/founder"
+import { CHANGE_EXECUTIVE_PASSWORD } from "@/utils/server/executive"
 
 const formSchema = z.object({
     oldPassword: z.string().min(6, "Old password should be more than 6 characters"),
@@ -84,7 +85,7 @@ export default function ChangePasswordForm({ type }: { type: "founder" | "execut
             }
 
             if (type === "executive") {
-                throw new Error("feature not available")
+                return CHANGE_EXECUTIVE_PASSWORD(user._id, values, user.token)
             } else if (type === "founder") {
 
                 return CHANGE_FOUNDER_PASSWORD(user._id, values, user.token)

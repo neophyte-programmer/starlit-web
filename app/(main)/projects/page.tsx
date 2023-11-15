@@ -1,6 +1,4 @@
 "use client"
-import { APP_NAME } from "@/utils/constants";
-import { Metadata } from "next";
 import Breadcrumb from "@/components/navigation/breadcrumb";
 import { projects } from "@/utils/data";
 import ProjectCard from "@/components/cards/project-card";
@@ -10,6 +8,8 @@ import { redirect } from "next/navigation"
 import BouncingBalls from "@/components/loaders/bouncing-balls";
 import toast from "react-hot-toast";
 import { GET_ALL_PROJECTS } from "@/utils/server/project";
+// import { APP_NAME } from "@/utils/constants";
+// import { Metadata } from "next";
 
 
 

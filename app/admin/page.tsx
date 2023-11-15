@@ -2,7 +2,6 @@
 import FounderInfoGraphics from "@/components/founder-info-graphics";
 import { useStateValue } from "@/context/StateProvider";
 import { convertDate } from "@/lib/utils";
-import { useState } from "react";
 
 
 export default function FounderDashboardPage() {

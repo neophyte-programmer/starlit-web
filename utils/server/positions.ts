@@ -84,3 +84,23 @@ export const DELETE_POSITION = async (id: string, token: string) => {
         
     }
 }
+
+export const GET_SINGLE_POSITION = async (id: string, token: string) => {
+    try {
+        const response: ApiResponse<Position> = await Axios({
+            method: "GET",
+            url: `/position/${id}`,
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+
+        if (response.status === 200 || response.data.success) {
+            return response.data.data
+        } else {
+            throw new Error("oops")
+        } 
+    } catch (error) {
+        
+    }
+}

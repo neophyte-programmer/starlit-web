@@ -6,7 +6,7 @@ import LoadingScreen from '../loaders/loading-screen'
 import LoginForm from '../forms/login-form'
 
 function GetSession({ children, type }: { children: React.ReactNode; type: "founder" | "executive" }) {
-    const [{ user }, dispatch] = useStateValue()
+    const [{ user, role }, dispatch] = useStateValue()
     const { isPending, isError, data, error, isSuccess } = useQuery({
         queryKey: ['session-user'],
         queryFn: () => GET_SESSION_USER(type),
@@ -18,7 +18,7 @@ function GetSession({ children, type }: { children: React.ReactNode; type: "foun
         return <LoadingScreen />
     }
 
-    if (isError) {
+    if (isError || role !== type ) {
 
         return <LoginForm type={type} />
     }
@@ -39,9 +39,11 @@ function GetSession({ children, type }: { children: React.ReactNode; type: "foun
 }
 
 export default function AuthProvider({ children, type }: { children: React.ReactNode; type: "founder" | "executive" }) {
-    const [{ user }, dispatch] = useStateValue()
+    const [{ user, role }, dispatch] = useStateValue()
+
+
     
-    if (user) {
+    if (user && role === type) {
         return children
     }
     
