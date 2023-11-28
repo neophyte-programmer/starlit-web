@@ -114,7 +114,7 @@ export default function EditProjectForm({ data }: { data: ProjectSchema }) {
 
                 return newData
             })
-            toast.success("Position Updated")
+            toast.success("Project Updated")
         },
         onError: (error: any) => {
             console.log(error);
@@ -126,45 +126,54 @@ export default function EditProjectForm({ data }: { data: ProjectSchema }) {
 
    
     function onSubmit(values: z.infer<typeof formSchema>) {
-        if ((thumbnail || thumbnail !== "") && !selectedFile) {
-            return null
+        if ((!thumbnail || thumbnail === "") && !selectedFile) {
+            return toast.error("There is no thumbnail")
         }
 
-        const uploadToast = toast.loading("Uploading images ...")
-
-        const fileName = getRandomID()
-
-        const file = selectedFile
-        const storageRef = ref(storage, `projects/${fileName}`)
-        const uploadTask = uploadBytesResumable(storageRef, file)
-
-        uploadTask.on("state_changed", (snapshot) => {
-            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        }, (error) => {
-            toast.error("Error uploading images", { id: uploadToast })
-            return
-        }, () => {
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
-                toast.success("Images uploaded successfully", { id: uploadToast })
-
-                // const thumbnailDetails = {
-                //     url: downloadUrl,
-                //     ref: `projects/${fileName}`,
-                //     id: fileName
-                // }
-
-                setThumbnail(() => downloadUrl)
-                // const editToast = toast.loading("Editing project details ...")
-                const newInfo = {
-                    ...values,
-                    thumbnail: downloadUrl
-                }
-                editProject.mutate(newInfo, {
-
+        if (selectedFile) {
+            
+            const uploadToast = toast.loading("Uploading images ...")
+    
+            const fileName = getRandomID()
+    
+            const file = selectedFile
+            const storageRef = ref(storage, `projects/${fileName}`)
+            const uploadTask = uploadBytesResumable(storageRef, file)
+    
+            uploadTask.on("state_changed", (snapshot) => {
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            }, (error) => {
+                toast.error("Error uploading images", { id: uploadToast })
+                return
+            }, () => {
+                getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
+                    toast.success("Images uploaded successfully", { id: uploadToast })
+    
+                    // const thumbnailDetails = {
+                    //     url: downloadUrl,
+                    //     ref: `projects/${fileName}`,
+                    //     id: fileName
+                    // }
+    
+                    setThumbnail(() => downloadUrl)
+                    // const editToast = toast.loading("Editing project details ...")
+                    const newInfo = {
+                        ...values,
+                        thumbnail: downloadUrl
+                    }
+                    editProject.mutate(newInfo, {
+    
+                    })
                 })
+            }
+            )
+        } else {
+            editProject.mutate({
+                ...values,
+                thumbnail
             })
         }
-        )
+
         
     }
     return (
@@ -241,7 +250,7 @@ export default function EditProjectForm({ data }: { data: ProjectSchema }) {
                         render={({ field }) => (
                             <FormItem className="md:col-span-2">
                                 <FormControl>
-                                    <Textarea className="text-black resize-none outline-0 focus:ring-0 focus-visible:ring-offset-0 " disabled={editProject.isPending} placeholder="Location" {...field} />
+                                    <Textarea className="text-black resize-none outline-0 focus:ring-0 focus-visible:ring-offset-0 " disabled={editProject.isPending} placeholder="Description" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -289,7 +298,7 @@ export default function EditProjectForm({ data }: { data: ProjectSchema }) {
                         )}
                     />
                 </div>
-                <Button className="mx-auto" type="submit">Modify Details</Button>
+                <Button  disabled={editProject.isPending} className="mx-auto" type="submit">Modify Details</Button>
             </form>
         </Form>
     )

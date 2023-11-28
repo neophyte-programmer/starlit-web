@@ -4,6 +4,8 @@ import ProjectCard from "@/components/cards/project-card";
 import { useQuery } from "@tanstack/react-query"
 import BouncingBalls from "@/components/loaders/bouncing-balls";
 import { GET_ALL_PROJECTS } from "@/utils/server/project";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function ProjectsPage() {
     const { isPending, isError, data, error, isSuccess } = useQuery({
@@ -18,7 +20,35 @@ export default function ProjectsPage() {
     })
 
     console.log(error, isPending, data)
-    
+
+    if (isPending) {
+        return (
+            <div className="w-full h-[70vh] bg-white flex text-center container flex-col gap-4 items-center justify-center">
+                <h3 className="text-4xl font-semibold">Our Projects</h3>
+            <p>
+                We are gathering the resources for our projects
+            </p>
+                <BouncingBalls />
+            </div>
+        )
+    }
+
+
+    if (isError || data === undefined) {
+
+        return <div className="w-full h-[70vh] text-center bg-white container flex flex-col gap-4 items-center justify-center">
+            <h3 className="text-4xl font-semibold">Oops!</h3>
+            <p>
+                It seems our servers are down. Our engineers have been notified. Kindly refresh this page or try accessing it in a few minutes
+            </p>
+            <Link href="/">
+                <Button className="w-max">
+                    Back To Home
+                </Button>
+            </Link>
+        </div>
+    }
+
 
     return (
         <>
@@ -33,11 +63,9 @@ export default function ProjectsPage() {
                         <p className='uppercase  text-sm text-starlit-pink'>Our Projects</p>
                         <h3 className='font-semibold text-3xl'>Passionately embarking on life-changing projects</h3>
                         <p className='mt-4'>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur nemo, laudantium incidunt rerum eius minus hic adipisci eaque, necessitatibus, blanditiis provident consequatur quam ipsam assumenda. Ea distinctio repudiandae ratione odit a exercitationem magni esse. Ipsum explicabo totam aspernatur autem consequatur.
+                            Starlit Child Ghana is dedicated to making a positive change by embarking on many projects. We believe that change effective when we come together to make people&apos;s lives great. Below are some
                         </p>
-                        <p className='mt-4'>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, reiciendis molestiae non magni aut debitis dolore odit eos alias aliquid fuga, corrupti architecto, fugit ratione mollitia voluptas est sapiente iusto cum. Qui eligendi aliquid at officiis voluptatibus veritatis quos beatae! Et necessitatibus est, expedita harum fugiat laboriosam blanditiis veritatis tempore?
-                        </p>
+
 
                     </div>
                 </section>
@@ -50,12 +78,14 @@ export default function ProjectsPage() {
                     </div>
                     <>
                         {
-                            isError || data === undefined ? <>
-                                An error occured. Please refresh the page
+                            isError ? <>
+                                An error occured. Please refresh the page. If this persists, kindly try again later
                             </> : (
                                 <>
                                     {
-                                        isPending ? <BouncingBalls /> : (
+                                        isPending || data === undefined ? <div className="w-full min-h-[40vh] flex items-center justify-center">
+                                            <BouncingBalls />
+                                        </div> : (
                                             <>
                                                 <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-4 md:gap-8">
 

@@ -240,7 +240,7 @@ export default function AddProjectForm() {
                         render={({ field }) => (
                             <FormItem className="md:col-span-2">
                                 <FormControl>
-                                    <Textarea className="text-black resize-none outline-0 focus:ring-0 focus-visible:ring-offset-0 " disabled={editProject.isPending} placeholder="Location" {...field} />
+                                    <Textarea className="text-black resize-none outline-0 focus:ring-0 focus-visible:ring-offset-0 " disabled={editProject.isPending} placeholder="Description" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>

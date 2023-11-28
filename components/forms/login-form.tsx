@@ -97,7 +97,7 @@ export default function LoginForm({ type }: { type: "founder" | "executive" }) {
         <main className="w-screen bg-black/5 h-screen overflow-hidden flex flex-col gap-4 items-center justify-center">
 
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-lg w-full space-y-4 bg-white shadow-md rounded-lg md:p-8">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-lg w-full space-y-4 bg-white shadow-md rounded-lg p-4 sm:p-8">
                     <div className="flex flex-col gap-2 text-sm text-center">
                         <h1 className="text-3xl text-center font-medium">Login.</h1>
                         <p className="text-neutral-500">
