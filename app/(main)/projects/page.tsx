@@ -53,9 +53,10 @@ export default function ProjectsPage() {
     return (
         <>
             <Breadcrumb
-                bg="/images/freepik/hero1.jpg"
+                bg="/projects.jpeg"
                 subtitle="The people and places where we have spread our love"
                 title="Our Projects"
+                position="center"
             />
             <main className="min-h-screen container flex flex-col gap-4">
                 <section className="">
@@ -63,7 +64,7 @@ export default function ProjectsPage() {
                         <p className='uppercase  text-sm text-starlit-pink'>Our Projects</p>
                         <h3 className='font-semibold text-3xl'>Passionately embarking on life-changing projects</h3>
                         <p className='mt-4'>
-                            Starlit Child Ghana is dedicated to making a positive change by embarking on many projects. We believe that change effective when we come together to make people&apos;s lives great. Below are some
+                            Starlit Child Ghana is dedicated to making a positive change by embarking on many projects. We believe that change effective when we come together to make people&apos;s lives great. Below are some projects Starlit has embarked on
                         </p>
 
 

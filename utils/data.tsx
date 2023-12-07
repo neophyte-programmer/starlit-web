@@ -1,29 +1,29 @@
 import { BsFacebook, BsFillMicFill, BsInstagram, BsLinkedin, BsTwitter } from "react-icons/bs";
 import { IoIosPeople } from "react-icons/io";
-import { FaEquals } from "react-icons/fa6";
+import { FaCity, FaEquals } from "react-icons/fa6";
 import { MdVolunteerActivism } from "react-icons/md";
 import { CoreValue, Founder, Partner, Project, SocialLink, Team } from "@/types";
 
 export const coreValues: CoreValue[] = [
     {
-        icon: MdVolunteerActivism,
-        title: "Compassion",
-        desc: "Our NGO is driven by a deep sense of empathy and care guiding our actions for those we serve.",
+        icon: IoIosPeople,
+        title: "Teamwork",
+        desc: "Starlit Child Ghana is dedicated to positively shaping the lives of children by meeting their educational, physical, and emotional needs, a mission that relies on the collective efforts of our members and executives. Unwavering in our commitment, we prioritize collaboration towards a shared goal, harnessing the unique strengths of each member and executive for the greater good of the organization. ",
     },
     {
-        icon: FaEquals,
-        title: "Equality",
-        desc: "We are unwavering in our pursuit of equal opportunities and rights for all individuals, irrespective of their circumstances.",
+        icon: FaCity,
+        title: "Community Commitment",
+        desc: "Our pledge to community commitment drives collaborative efforts with parents, educators, and community stakeholders, creating a holistic and enriching experience for every child under our care and collectively shaping a brighter future. We aspire to nurture their potential, instilling resilience, and empowering them to thrive in all aspects of life. ",
     },
     {
         icon: BsFillMicFill,
-        title: "Advocacy",
-        desc: "Advocacy is at the forefront of our mission, as we tirelessly champion the needs and rights of those in need in society.",
+        title: "Integrity",
+        desc: "Starlit upholds a commitment to integrity, fostering a culture of honesty, transparency, and ethical principles in all operations, thereby building trust within the community, and creating a safe, nurturing environment for children to thrive. We aim to be exemplary custodians of trust by instilling in them the values of honesty, respect, and responsibility for a lasting positive impact on their lives.        ",
     },
     {
-        icon: IoIosPeople,
-        title: "Community-Centered",
-        desc: "We place the community at the heart of our efforts, engaging and collaborating with local stakeholders to empower individuals through our initiatives",
+        icon: MdVolunteerActivism,
+        title: "Service Beyond Self",
+        desc: "Upholding 'Service Beyond Self' as a core value, we drive ourselves to positively influencing children's lives by going above and beyond to address their educational, physical, and emotional needs. We strive to create lifelong, transformative experiences that empower every child.",
     },
 ]
 
@@ -192,3 +192,17 @@ export const featuredCauses = [
 ]
 
 
+export const joinUs = [
+    {
+        step: 1,
+        description: "Grab a subscription form of GHc20 by paying via momo number 0206272355. Reference: Your Name"
+    },
+    {
+        step: 2,
+        description: "Send us a message on Whatsapp to the number 0278937881 to confirm payment"
+    },
+    {
+        step: 3,
+        description: "The form will be sent to you immediately. The information will be processed for you to be part of the team"
+    }
+]

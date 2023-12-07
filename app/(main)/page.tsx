@@ -85,7 +85,7 @@ export default function Home() {
       <h1 className='font-semibold text-4xl'>
           Our Core Values
         </h1>
-        <div className='w-full h-full grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-4 items-center justify-center'>
+        <div className='w-full h-full grid md:grid-cols-2   gap-x-8 gap-y-4 md:gap-x-8 items-center justify-center'>
           {
             coreValues.map((value, i) => (
               <CoreValueCard key={value.title} value={value} />

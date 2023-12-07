@@ -20,8 +20,9 @@ export default function ContactPage() {
     return (
         <div>
             <Breadcrumb
-                bg="/images/donate.jpg"
+                bg="contact.jpeg"
                 title={`Contact Us`}
+                position="bottom"
                 subtitle="Reach out to us and talk to our representatives"
             />
             <section className="grid grid-cols-1 gap-8 lg:grid-cols-2 py-16 container">

@@ -6,6 +6,7 @@ import QueryProvider from '@/components/providers/query-provider'
 import ContextProvider from '@/components/providers/context-provider'
 import ToastProvider from '@/components/providers/toast-provider'
 import ModalProvider from '@/components/providers/modal-provider'
+import Prefetch from '@/components/prefetch'
 
 export const metadata: Metadata = {
   title: `Home | ${APP_NAME}`,
@@ -24,6 +25,7 @@ export default function RootLayout({
         <QueryProvider>
           <ContextProvider>
             <ModalProvider />
+            <Prefetch />
             {children}
           </ContextProvider>
         </QueryProvider>

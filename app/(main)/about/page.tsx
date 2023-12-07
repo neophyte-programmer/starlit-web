@@ -8,9 +8,10 @@ export default function AboutPage() {
     return (
         <>
             <Breadcrumb
-                bg="/images/freepik/her3.jpg"
+                bg="/about.jpeg"
                 subtitle="Every child is your child"
                 title="Starlit Child Ghana"
+                position="center"
             />
             <main className=" h-full  flex flex-col gap-4 container">
                 <section id="history" className="">
@@ -42,9 +43,9 @@ export default function AboutPage() {
 
                     </div>
                 </section>
-                <div className='bg-neutral-200 rounded-3xl  overflow-hidden relative w-full min-h-[50vh] md:min-h-[60vh] '>
+                {/* <div className='bg-neutral-200 rounded-3xl  overflow-hidden relative w-full min-h-[50vh] md:min-h-[60vh] '>
                     <Image priority src="/images/hero.jpeg" alt="children" fill className='object-cover' />
-                </div>
+                </div> */}
 
                 <section id="what-we-do" className="">
                     <div className='w-full flex  flex-col justify-center gap-'>

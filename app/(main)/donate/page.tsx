@@ -2,7 +2,7 @@
 import Breadcrumb from "@/components/navigation/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { APP_NAME, MOMO_DETAILS } from "@/utils/constants";
-import { featuredCauses } from "@/utils/data";
+import { featuredCauses, joinUs } from "@/utils/data";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -13,13 +13,13 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import { copyToClipboard } from "@/lib/utils";
+import { cn, copyToClipboard } from "@/lib/utils";
 
 export default function DonatePage() {
     return (
         <>
             <Breadcrumb
-                bg="/images/donate.jpg"
+                bg="donate.jpeg"
                 title={`Donate to ${APP_NAME} `}
                 subtitle="Every child matters, every bit helps. Together, we can do wonders to help children in need"
             />
@@ -74,30 +74,54 @@ export default function DonatePage() {
                             <div className="flex flex-col gap-2">
                                 <div>
                                     <span className="font-semibold">
-                                        Number: 
+                                        Number:
                                     </span>
-                                   {" "} {MOMO_DETAILS.number}
+                                    {" "} {MOMO_DETAILS.number}
                                 </div>
                                 <div>
                                     <span className="font-semibold">
-                                        Name: 
+                                        Name:
                                     </span>
-                                   {" "} {MOMO_DETAILS.name}
+                                    {" "} {MOMO_DETAILS.name}
                                 </div>
                                 <div>
                                     <span className="font-semibold">
-                                        Service: 
+                                        Service:
                                     </span>
-                                   {" "} {MOMO_DETAILS.service}
+                                    {" "} {MOMO_DETAILS.service}
                                 </div>
                             </div>
                             <Button onClick={() => copyToClipboard(MOMO_DETAILS.number)} className="ml-auto">
-                                    Copy Number
+                                Copy Number
                             </Button>
                         </DialogContent>
                     </Dialog>
 
 
+                </section>
+                <section className="flex flex-col gap-8 text-center" >
+                    <h2 className="text-center text-3xl font-medium md:text-4xl ">
+                        Join Our Team
+                    </h2>
+                    <div className="grid md:grid-cols-3 gap-4">
+                        {
+                            joinUs.map(({ step, description }) => (
+                                <article className={cn(
+                                    "relative text-white p-4 rounded-md  flex items-center gap-4 ",
+                                    step === 1 && "bg-blue-400 text-blue-200",
+                                    step === 2 && "bg-blue-500 text-blue-300",
+                                    step === 3 && "bg-blue-600 text-blue-400",
+                                )} key={step}>
+                                    <p className="font-bold  text-[7rem] ">
+                                        {step}
+                                    </p>
+                                    <p className=" text-white  text-left">
+                                        {description}
+                                    </p>
+                                </article>
+                            ))
+                        }
+                        </div>
                 </section>
             </main>
         </>
